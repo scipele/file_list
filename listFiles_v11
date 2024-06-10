@@ -1,11 +1,11 @@
 /*
-listFiles_v10
+listFiles_v11
 Purpose:   Create a file listing with sha1 hash for a pathname entered by the user
            SHA-1 Hash creates a 40 Hexidecimal Digit unique id for the binary content of any file
 Output:    The file listing is placed in the c:\t\file_list.csv which can be imported into excel and separated with pipe "|" either during import
 Author:    Tony Sciple
 Version:   v10
-Date:      06/09/2024 */
+Date:      06/10/2024 */
 
 #include <iostream>
 #include <filesystem>
@@ -216,16 +216,13 @@ void updateProgress(int current, int total);
 
 int main() {
     // get user entered path
-
-    //temp hard coded for testing purposes    
-    //std::wstring path = L"C:/Users/mscip/Documents";
-
     std::wstring path;
     std::cout << "Enter the path to list files\n"
-              << "(example-> c:\\myFolder)\n"
-              << "or enter 'c' to cancel: ";
-    std::wcin >> path;
-
+              << "   Example Entry 'c:\\myFolder'\n"
+              << "   Or press 'c' to cancel\n"
+              << "   User entry here ============> ";
+    std::getline(std::wcin, path);
+    
     // Allow user to cancel execution by entering 'c'
     if (path == L"c") {
         std::cout << "Execution cancelled by user." << std::endl;
